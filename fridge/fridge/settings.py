@@ -91,9 +91,9 @@ WSGI_APPLICATION = 'fridge.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fridge',
-        'USER': 'fridge',
-        'PASSWORD': 'fridge1234',
+        'NAME': os.getenv('MYSQL_DATABASE'),
+        'USER': os.getenv('MYSQL_USER'),
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '3306',
     }
