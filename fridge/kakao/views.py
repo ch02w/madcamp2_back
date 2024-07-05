@@ -9,15 +9,7 @@ def save_user(request):
         data = json.loads(request.body)
         kakao_id = data.get('kakao_id')
         nickname = data.get('nickname')
-
-        user, created = User.objects.get_or_create(
-            kakao_id=kakao_id,
-            defaults={'nickname': nickname}
-        )
-
-        if not created:
-            user.nickname = nickname
-            user.save()
+        print(kakao_id, " ", nickname)
 
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'}, status=400)

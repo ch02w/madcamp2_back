@@ -168,7 +168,3 @@ CORS_ALLOW_HEADERS = (
 
 # 슬래시 제거
 APPEND_SLASH = False
-
-# Kakao Login
-KAKAO_REST_API_KEY = os.getenv('KAKAO_REST_API_KEY')
-KAKAO_REDIRECT_URI = 'http://localhost:3000/authapp/kakao/callback/'
