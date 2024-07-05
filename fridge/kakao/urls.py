@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import SaveUserInfoView
+from .views import save_user
 
 urlpatterns = [
-    path('save_user/', SaveUserInfoView.as_view(), name='save_user'),
+    path('save_user/', save_user, name='save_user'),
 ]

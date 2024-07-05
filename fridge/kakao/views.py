@@ -1,13 +1,23 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .models import KakaoUser
-from .serializers import KakaoUserSerializer
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import User
+import json
 
-class SaveUserInfoView(APIView):
-    def post(self, request):
-        serializer = KakaoUserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@csrf_exempt
+def save_user(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        kakao_id = data.get('kakao_id')
+        nickname = data.get('nickname')
+
+        user, created = User.objects.get_or_create(
+            kakao_id=kakao_id,
+            defaults={'nickname': nickname}
+        )
+
+        if not created:
+            user.nickname = nickname
+            user.save()
+
+        return JsonResponse({'status': 'success'})
+    return JsonResponse({'status': 'error'}, status=400)
