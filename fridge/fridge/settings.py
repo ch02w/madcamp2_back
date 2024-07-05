@@ -11,6 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+import pymysql  
+
+
+pymysql.install_as_MySQLdb()
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -166,24 +174,6 @@ CORS_ALLOW_HEADERS = (
 # 슬래시 제거
 APPEND_SLASH = False
 
-# allauth
-SITE_ID = 1
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
-
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-
-SOCIALACCOUNT_PROVIDERS = {
-    'kakao': {
-        'APP': {
-            'client_id': 'e3c95639bbf92cfd9c91b654c90e6182',
-            'secret': 'pPUxikL1HhUG3wWyIiT6pS2iPWEDdJgp',
-            'key': ''
-        }
-    }
-}
-
+# Kakao Login
+KAKAO_REST_API_KEY = os.getenv('KAKAO_REST_API_KEY')
+KAKAO_REDIRECT_URI = 'http://localhost:3000/authapp/kakao/callback/'
