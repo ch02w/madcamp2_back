@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
 ]
 
 MIDDLEWARE = [
@@ -124,7 +129,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-##CORS
+# CORS
 CORS_ORIGIN_ALLOW_ALL=True   #원하는 IP를 입력하면 해당 IP랑만 소통한다.
 CORS_ALLOW_CREDENTIALS = True
 
@@ -149,5 +154,27 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
 )
 
-## 슬래시 제거
+# 슬래시 제거
 APPEND_SLASH = False
+
+# allauth
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'kakao': {
+        'APP': {
+            'client_id': 'e3c95639bbf92cfd9c91b654c90e6182',
+            'secret': 'pPUxikL1HhUG3wWyIiT6pS2iPWEDdJgp',
+            'key': ''
+        }
+    }
+}
+
