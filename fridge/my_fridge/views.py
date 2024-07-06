@@ -45,7 +45,6 @@ class MyFridgeUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
             if my_fridge_item:
                 my_fridge_item.amount = serializer.validated_data.get('amount', my_fridge_item.amount)
                 my_fridge_item.expiration_date = serializer.validated_data.get('expiration_date', my_fridge_item.expiration_date)
-                my_fridge_item.history_id = serializer.validated_data.get('history_id', my_fridge_item.history_id)
                 my_fridge_item.save()
                 return Response(MyFridgeSerializer(my_fridge_item).data)
             return Response(status=status.HTTP_404_NOT_FOUND)

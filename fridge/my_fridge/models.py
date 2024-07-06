@@ -22,7 +22,6 @@ class MyFridge(models.Model):
     food_id = models.IntegerField()
     amount = models.IntegerField()
     expiration_date = models.DateTimeField()
-    history_id = models.IntegerField()
 
     class Meta:
         managed = False
