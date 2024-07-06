@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'kakao',
     'ingredients',
+    'recipes',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'fridge.wsgi.application'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+}
 
 
 # Database
