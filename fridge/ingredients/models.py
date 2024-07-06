@@ -2,7 +2,7 @@
 
 from django.db import models
 
-class Ingredient(models.Model):
+class Ingredients(models.Model):
     FOOD_CATEGORIES = [
         ('과일', '과일'),
         ('채소', '채소'),

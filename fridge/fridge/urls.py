@@ -22,4 +22,5 @@ urlpatterns = [
     path('auth/', include('kakao.urls')),
     path('ingredients/', include('ingredients.urls')),
     path('recipes/', include('recipes.urls')),
+    path('fridge/', include('my_fridge.urls')),
 ]

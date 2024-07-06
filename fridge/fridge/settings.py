@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'kakao',
     'ingredients',
     'recipes',
+    "my_fridge",
 ]
 
 MIDDLEWARE = [
