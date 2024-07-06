@@ -48,10 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'django.contrib.sites',
-    'kakao',
-    'ingredients',
-    'recipes',
-    "my_fridge",
+    'apps.kakao',
+    'apps.ingredients',
+    'apps.recipes',
+    "apps.my_fridge",
 ]
 
 MIDDLEWARE = [
