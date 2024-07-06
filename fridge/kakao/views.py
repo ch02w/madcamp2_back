@@ -4,7 +4,7 @@ from .models import Users
 import json
 
 @csrf_exempt
-def save_user(request):
+def kakao(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         user_id = data.get('kakao_id')

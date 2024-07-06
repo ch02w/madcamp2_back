@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import save_user
+from .views import kakao
 
 urlpatterns = [
-    path('save_user/', save_user, name='save_user'),
+    path('kakao/', kakao, name='kakao'),
 ]
