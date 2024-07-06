@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.sites',
     'kakao',
+    'ingredients',
 ]
 
 MIDDLEWARE = [
