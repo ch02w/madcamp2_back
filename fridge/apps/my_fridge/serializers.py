@@ -15,12 +15,15 @@ class MyFridgeSerializer(serializers.ModelSerializer):
 
     def get_unit(self, obj):
         return Ingredients.objects.get(food_id=obj.food_id).unit
+    
+    def get_food_category(self, obj):
+        return Ingredients.objects.get(food_id=obj.food_id).food_category
 
 class MyFridgeCreateSerializer(serializers.Serializer):
     food_id = serializers.IntegerField()
     amount = serializers.IntegerField()
-    expiration_date = serializers.DateTimeField()
+    expiration_date = serializers.DateField()
 
 class MyFridgeUpdateSerializer(serializers.Serializer):
     amount = serializers.IntegerField(required=False)
-    expiration_date = serializers.DateTimeField(required=False)
+    expiration_date = serializers.DateField(required=False)

@@ -6,7 +6,6 @@ class Ingredients(models.Model):
     food_name = models.CharField(max_length=255)
     food_category = models.CharField(max_length=7)
     unit = models.CharField(max_length=2)
-    image = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False

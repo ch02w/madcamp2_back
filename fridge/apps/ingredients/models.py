@@ -28,7 +28,6 @@ class Ingredients(models.Model):
     food_name = models.CharField(max_length=255)
     food_category = models.CharField(max_length=20, choices=FOOD_CATEGORIES)
     unit = models.CharField(max_length=10, choices=UNITS)
-    image = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.food_name
