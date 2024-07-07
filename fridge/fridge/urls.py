@@ -23,4 +23,5 @@ urlpatterns = [
     path('ingredients/', include('apps.ingredients.urls')),
     path('recipes/', include('apps.recipes.urls')),
     path('fridge/', include('apps.my_fridge.urls')),
+    path('community/', include('apps.community.urls')),
 ]

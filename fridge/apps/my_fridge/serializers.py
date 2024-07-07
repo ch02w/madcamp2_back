@@ -1,10 +1,10 @@
-# my_fridge/serializers.py
 from rest_framework import serializers
 from .models import MyFridge, Ingredients
 
 class MyFridgeSerializer(serializers.ModelSerializer):
     food_name = serializers.SerializerMethodField()
     unit = serializers.SerializerMethodField()
+    food_category = serializers.SerializerMethodField()
 
     class Meta:
         model = MyFridge
