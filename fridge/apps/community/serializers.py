@@ -8,31 +8,45 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class BoardSerializer(serializers.ModelSerializer):
-    nickname = serializers.SerializerMethodField()
+    writer_nickname = serializers.SerializerMethodField()
+
     class Meta:
         model = Board
         fields = '__all__'
 
-    def get_nickname(self, obj):
-        return User.objects.get(user_id=obj.writer_id).nickname
+    def get_writer_nickname(self, obj):
+        try:
+            return User.objects.get(user_id=obj.writer_id).nickname
+        except User.DoesNotExist:
+            return None
 
 class CommentSerializer(serializers.ModelSerializer):
-    nickname = serializers.SerializerMethodField()
+    writer_nickname = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
         fields = '__all__'
 
-    def get_nickname(self, obj):
-        return User.objects.get(user_id=obj.writer_id).nickname
+    def get_writer_nickname(self, obj):
+        try:
+            return User.objects.get(user_id=obj.writer_id).nickname
+        except User.DoesNotExist:
+            return None
 
 class BoardDetailSerializer(serializers.ModelSerializer):
-    comments = CommentSerializer(many=True, read_only=True)
-    nickname = serializers.SerializerMethodField()
+    comments = serializers.SerializerMethodField()
+    writer_nickname = serializers.SerializerMethodField()
 
     class Meta:
         model = Board
         fields = '__all__'
 
-    def get_nickname(self, obj):
-        return User.objects.get(user_id=obj.writer_id).nickname
+    def get_writer_nickname(self, obj):
+        try:
+            return User.objects.get(user_id=obj.writer_id).nickname
+        except User.DoesNotExist:
+            return None
+
+    def get_comments(self, obj):
+        comments = Comment.objects.filter(board_id=obj.board_id)
+        return CommentSerializer(comments, many=True).data

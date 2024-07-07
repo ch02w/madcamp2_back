@@ -30,7 +30,7 @@ class Comment(models.Model):
     parent_id = models.IntegerField(blank=True, null=True)
     writer_id = models.CharField(max_length=255, blank=True, null=True)
     content = models.TextField()
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         managed = False
