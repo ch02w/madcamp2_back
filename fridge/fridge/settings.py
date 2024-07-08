@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'apps.recipes',
     "apps.my_fridge",
     "apps.community",
+    "apps.history",
 ]
 
 MIDDLEWARE = [
