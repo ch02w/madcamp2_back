@@ -41,7 +41,7 @@ class FoodHistoryAPIView(APIView):
 
         for detail in details:
             history = History.objects.get(history_id=detail.history_id)
-            recipe_name = '커스텀'
+            recipe_name = '커스텀 레시피'
             if history.recipe_id:
                 try:
                     recipe = Recipe.objects.get(recipe_id=history.recipe_id)

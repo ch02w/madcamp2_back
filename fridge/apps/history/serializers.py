@@ -44,4 +44,4 @@ class HistorySerializer(serializers.ModelSerializer):
                 return recipe.recipe_name
             except Recipe.DoesNotExist:
                 return 'Unknown Recipe'
-        return '커스텀'
+        return '커스텀 레시피'
