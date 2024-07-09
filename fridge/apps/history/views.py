@@ -22,10 +22,12 @@ class HistoryListCreateAPIView(generics.ListCreateAPIView):
         data = request.data
         time = parse_datetime(data['time'])
         recipe_id = data['recipe_id']
-        details = data['details'][2:-1].split(', ')
+        details = data['details'][2:-1].split('},')
         print(details)
         history = History.objects.create(user_id=user_id, time=time, recipe_id=recipe_id)
         for detail in details:
+            if detail[-1] != '}':
+                detail += '}'
             detail = json.loads(detail)
             food_id = detail['food_id']
             amount = detail['amount']
